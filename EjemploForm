@@ -1,0 +1,165 @@
+Form1.h
+
+#pragma once
+
+namespace ejemplologim {
+
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
+
+	/// <summary>
+	/// Summary for Form1
+	/// </summary>
+	public ref class Form1 : public System::Windows::Forms::Form
+	{
+	public:
+		Form1(void)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+		}
+
+	protected:
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		~Form1()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Label^  txt_contrasena;
+	private: System::Windows::Forms::TextBox^  txt_usuario;
+	private: System::Windows::Forms::TextBox^  txt_contraseña;
+	private: System::Windows::Forms::Button^  button1;
+	protected: 
+
+	private:
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		System::ComponentModel::Container ^components;
+
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		void InitializeComponent(void)
+		{
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->txt_contrasena = (gcnew System::Windows::Forms::Label());
+			this->txt_usuario = (gcnew System::Windows::Forms::TextBox());
+			this->txt_contraseña = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->SuspendLayout();
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(21, 76);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(43, 13);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Usuario";
+			this->label1->Click += gcnew System::EventHandler(this, &Form1::label1_Click);
+			// 
+			// txt_contrasena
+			// 
+			this->txt_contrasena->AutoSize = true;
+			this->txt_contrasena->Location = System::Drawing::Point(21, 139);
+			this->txt_contrasena->Name = L"txt_contrasena";
+			this->txt_contrasena->Size = System::Drawing::Size(61, 13);
+			this->txt_contrasena->TabIndex = 1;
+			this->txt_contrasena->Text = L"Contraseña";
+			// 
+			// txt_usuario
+			// 
+			this->txt_usuario->Location = System::Drawing::Point(108, 76);
+			this->txt_usuario->Name = L"txt_usuario";
+			this->txt_usuario->Size = System::Drawing::Size(100, 20);
+			this->txt_usuario->TabIndex = 2;
+			// 
+			// txt_contraseña
+			// 
+			this->txt_contraseña->Location = System::Drawing::Point(108, 139);
+			this->txt_contraseña->Name = L"txt_contraseña";
+			this->txt_contraseña->Size = System::Drawing::Size(100, 20);
+			this->txt_contraseña->TabIndex = 3;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(231, 106);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(58, 23);
+			this->button1->TabIndex = 4;
+			this->button1->Text = L"Entrar";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			// 
+			// Form1
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(347, 281);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->txt_contraseña);
+			this->Controls->Add(this->txt_usuario);
+			this->Controls->Add(this->txt_contrasena);
+			this->Controls->Add(this->label1);
+			this->Name = L"Form1";
+			this->Text = L"login";
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
+		}
+#pragma endregion
+	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 }
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+				 if((txt_usuario->Text!="ADMIN")&(txt_contraseña->Text!="1234")){
+					 MessageBox::Show("Contraseña o usuario Incorrecto","Error de autentificacion",
+					 MessageBoxButtons::OK,MessageBoxIcon::Error);}
+				
+			 }
+};
+}
+
+EjemploLogin.cpp
+
+// ejemplologim.cpp : main project file.
+
+#include "stdafx.h"
+#include "Form1.h"
+
+using namespace ejemplologim;
+
+[STAThreadAttribute]
+int main(array<System::String ^> ^args)
+{
+	// Enabling Windows XP visual effects before any controls are created
+	Application::EnableVisualStyles();
+	Application::SetCompatibleTextRenderingDefault(false); 
+
+	// Create the main window and run it
+	Application::Run(gcnew Form1());
+	return 0;
+}
+
+
+
+
+
+
+
+
